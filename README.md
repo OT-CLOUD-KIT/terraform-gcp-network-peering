@@ -67,7 +67,7 @@ vpc_peerings = {
 
 | Name | Description | Type | Default | Required | 
 |------|-------------|:----:|---------|:--------:|
-|**project_id**| The ID of the project for which the IAM resource is to be configured | string |{ } | yes| 
+|**project_id**| The ID of the project for which the peering is to be configured | string |{ } | yes| 
 |**peer_project_ids**| The peer project ID for cross-project VPC peering | string | { } | yes | 
 |**vpc_peerings**| Map of VPC peerings | map(object) | [ ] |yes| 
  

@@ -2,8 +2,6 @@ variable "vpc_peerings" {
   description = "Map of VPC peerings"
   type = map(object({
     name                                = string
-    network                             = string
-    peer_network                        = string
     project_id                          = string
     peer_project_id                     = string
     export_custom_routes                = optional(bool)
@@ -11,4 +9,13 @@ variable "vpc_peerings" {
     export_subnet_routes_with_public_ip = optional(bool)
     import_subnet_routes_with_public_ip = optional(bool)
   }))
+}
+
+
+variable "network" {
+  type = string
+}
+
+variable "peer_network" {
+  type = string
 }

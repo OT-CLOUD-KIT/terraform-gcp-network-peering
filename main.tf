@@ -14,8 +14,8 @@ resource "google_compute_network_peering" "peering-1" {
 
   name = each.value.name
 
-  network      = "projects/${each.value.project_id}/global/networks/${each.value.network}"
-  peer_network = "projects/${each.value.peer_project_id}/global/networks/${each.value.peer_network}"
+  network      = var.network
+  peer_network = var.peer_network
 
   export_custom_routes                = lookup(each.value, "export_custom_routes", false)
   import_custom_routes                = lookup(each.value, "import_custom_routes", false)
@@ -28,8 +28,8 @@ resource "google_compute_network_peering" "reverse-peering" {
 
   name = "${each.value.name}-reverse"
 
-  network      = "projects/${each.value.peer_project_id}/global/networks/${each.value.peer_network}"
-  peer_network = "projects/${each.value.project_id}/global/networks/${each.value.network}"
+  network      = var.peer_network
+  peer_network = var.network
 
   export_custom_routes                = lookup(each.value, "import_custom_routes", false)
   import_custom_routes                = lookup(each.value, "export_custom_routes", false)

@@ -22,3 +22,11 @@ variable "vpc_peerings" {
     import_subnet_routes_with_public_ip = optional(bool)
   }))
 }
+
+variable "network" {
+  type = string
+}
+
+variable "peer_network" {
+  type = string
+}

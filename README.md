@@ -24,6 +24,8 @@ This Terraform configuration sets up VPC peering and optional reverse peering be
 module "vpc_peering" {
   source       = "./module"
   vpc_peerings = var.vpc_peerings
+  network      = var.network
+  peer_network = var.peer_network
 
   providers = {
     google.peer = google.peer
@@ -39,8 +41,6 @@ peer_project_id = "nw-opstree-dev-landing-zone" #
 vpc_peerings = {
   "peering_1" = {
     name                 = "peer-vpc1-vpc2"
-    network              = "default"
-    peer_network         = "new-vpc"
     project_id           = "nw-opstree-dev-landing-zone"
     peer_project_id      = "nw-opstree-dev-landing-zone"
     export_custom_routes = false
@@ -60,6 +60,10 @@ vpc_peerings = {
   }
 }
 
+network              = "default"
+
+peer_network         = "new-vpc"
+}
 
 ```
 
@@ -70,6 +74,8 @@ vpc_peerings = {
 |**project_id**| The ID of the project for which the peering is to be configured | string |{ } | yes| 
 |**peer_project_ids**| The peer project ID for cross-project VPC peering | string | { } | yes | 
 |**vpc_peerings**| Map of VPC peerings | map(object) | [ ] |yes| 
+| **network** | Name of the network | string | { } | yes |
+| **peer_network** | Name of the peer network | string | { } | yes |
  
 
 ## Outputs

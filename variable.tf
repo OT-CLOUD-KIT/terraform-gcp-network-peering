@@ -11,7 +11,6 @@ variable "vpc_peerings" {
   }))
 }
 
-
 variable "network" {
   type = string
 }
